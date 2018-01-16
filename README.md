@@ -136,9 +136,7 @@ y_values = ((400, 470), (410, 490), (400, 500), (430, 530),(440, 580),(410, 700)
 
 ![](output_images/find_cars.png)
 
-
 ![](output_images/heatmap.png)
-
 
 #### 2. Some examples of test images to demonstrate how the pipeline is working.  Optimizing the classifier.
 
@@ -208,14 +206,14 @@ In the above case, applying a threshold of 3 would eliminate the false positive 
 
 Also, caching helps eliminating the false positives since it gives more weight to the boxes which were present in the recent frames, thus it can relatively reduce the weight of false positives that otherwise would just pop up once in a while on a few frames.
 
-My final video submission can be found here:
+#### My final video submission can be found here:
 
-[project_video_output,mp4](project_video_output.mp4)
+[project_video_output.mp4](project_video_output.mp4)
 
 ### Discussion
 
 My submission could benefit from:
 
 - a more robust cache implementation that would give more weight to the bounding boxes detected in the last few frames.
-- additional tuning of the parameters, like the area to look for when we do the sliding window search. Ideally a very tight bounding box should be found for the car detections.
+- additional tuning of the parameters, like the area to look for when we do the sliding window search. Ideally a very tight (not intersecting the car image, but surrounding it) bounding box should be found for the car detections.
 - using more features (color and spatial histograms) seemed not to improve the model, so I purposefully avoided those in the final model, but perhaps they can add some value when they are configured properly.
