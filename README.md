@@ -210,7 +210,7 @@ Also, caching helps eliminating the false positives since it gives more weight t
 
 My final video submission can be found here:
 
-![](project_video_output.mp4)
+[project_video_output,mp4](project_video_output.mp4)
 
 ### Discussion
 
