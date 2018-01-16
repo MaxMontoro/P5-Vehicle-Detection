@@ -10,9 +10,6 @@ The goals of this project are the following:
 * Run the pipeline on a video stream and creating a heat map of recurring detections frame by frame to reject outliers and follow detected vehicles.
 * Estimating a bounding box for vehicles detected.
 
-
-
-
 ### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
 
 ### The data
@@ -210,6 +207,10 @@ Part of the optimization process was to **eliminate false positives**. This was 
 In the above case, applying a threshold of 3 would eliminate the false positive on the middle of the road. Of course this parameter has to be fine-tuned to minimize false positives and misses (*false negatives*) as well.
 
 Also, caching helps eliminating the false positives since it gives more weight to the boxes which were present in the recent frames, thus it can relatively reduce the weight of false positives that otherwise would just pop up once in a while on a few frames.
+
+My final video submission can be found here:
+
+![](project_video_output.mp4)
 
 ### Discussion
 
