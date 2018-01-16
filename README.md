@@ -14,6 +14,8 @@ The goals of this project are the following:
 
 ### The data
 
+The training data consisted of images from one of the two labels: `cars` and `not cars`. The number of images in the two classes was around the same:
+
 ```python
 vehicle_images = glob.glob('vehicles/**/*.png'))
 non_vehicle_images = glob.glob('non-vehicles/**/*.png'))
@@ -84,7 +86,7 @@ Here are some examples for the same images using the `RGB` color space and HOG p
 
 #### 2. Settling on HOG parameters
 
-I tried various combinations of parameters. At first I tried parameters that would result in better performance at the cost of accuracy, since at the beginning I was trying the get the pipeline to work at a basic level, then fine-tune it.
+I tried various combinations of parameters.  At first I tried parameters that would result in better performance at the cost of accuracy, since at the beginning I was trying the get the pipeline to work at a basic level, then fine-tune it.
 I was experimenting with color spaces: `RGB` turned out to be a not so good choice, `HSL` was even worse, but `YUV` seemed to perform much better. I decided to stick with `YUV` since it was war superior to the others.
 
 After some experimentation, I've found that the feature extraction is much faster if I use larger cells - of course perhaps at the cost of accuracy.
