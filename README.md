@@ -171,7 +171,7 @@ Then, we apply a threshold on the heatmap, only considering values above the spe
 
 Finally we draw bounding boxes for the labes with the `draw_labeled_bboxes` function, and draw these boxes to the orginal image. The output is something like this:
 
-![](output_images/bbox_final_examples.png)
+![](output_images/bbox_final_example.png)
 
 ### Video output
 
