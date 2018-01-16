@@ -136,14 +136,15 @@ scales =   (    1,          1.2,        1.5,       1.6,        2,         2.5,  
 y_values = ((400, 470), (410, 490), (400, 500), (430, 530),(440, 580),(410, 700),(430, 680), (420, 660))
 ```
 
-![](output_images/find_cars.png)
-
-![](output_images/heatmap.png)
-
 #### 2. Some examples of test images to demonstrate how the pipeline is working.  Optimizing the classifier.
 
+The `find_cars` function was used to find detections on an image. The return value of this function includes mutliple bounding boxes for the same car, like the image below shows:
 
-I tried various `cells_per_step` values to see which one worked best. At `1`, there are many windows and too many false positives, at `4`, there were too few detections, so I opted for a valoue of **`2`**.
+![](output_images/find_cars.png)
+
+We can then use these bounding boxes to construct a **heatmap** of the detections, thereby making our classification more robust. The heatmap image of the previous frame can be seen below:
+
+![](output_images/heatmap.png)
 
 
 ![](output_images/test1.png)
@@ -158,6 +159,7 @@ I tried various `cells_per_step` values to see which one worked best. At `1`, th
 
 ![](output_images/test6.png)
 
+Then, we apply a threshold on the heatmap, only considering values above the specified threshold. After that, we apply the `label` function from the `scipy.ndimage.measurements` module. This produces binary images like the ones below:
 
 ![](output_images/label_test1.png)
 ![](output_images/label_test2.png)
@@ -166,6 +168,10 @@ I tried various `cells_per_step` values to see which one worked best. At `1`, th
 ![](output_images/label_test5.png)
 ![](output_images/label_test6.png)
 
+
+Finally we draw bounding boxes for the labes with the `draw_labeled_bboxes` function, and draw these boxes to the orginal image. The output is something like this:
+
+![](output_images/bbox_final_examples.png)
 
 ### Video output
 
