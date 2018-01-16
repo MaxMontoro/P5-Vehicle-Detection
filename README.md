@@ -189,7 +189,7 @@ def process_image(img):
     boxes = find_cars_on_image(img)
     CACHE.add(boxes)
     heat = np.zeros_like(img[:,:,0]).astype(np.float)
-    for previous_boxes in CACHE.boxes:  # Using cached values here
+    for previous_boxes in CACHE.boxes:  # Using cached values as well here, plus the newly found boxes (found in the current frame)
         heat = add_heat(heat, previous_boxes)
     heat = apply_threshold(heat, 18)
     heatmap = np.clip(heat, 0, 255)
@@ -215,5 +215,9 @@ Also, caching helps eliminating the false positives since it gives more weight t
 My submission could benefit from:
 
 - a more robust cache implementation that would give more weight to the bounding boxes detected in the last few frames.
+- a smoothing function could be used to make the bounding boxes less wobbly
 - additional tuning of the parameters, like the area to look for when we do the sliding window search. Ideally a very tight (not intersecting the car image, but surrounding it) bounding box should be found for the car detections.
 - using more features (color and spatial histograms) seemed not to improve the model, so I purposefully avoided those in the final model, but perhaps they can add some value when they are configured properly.
+- a more advanced feature could be trajectory estimation, which could further enhance the accuracy of the detections (estimating where a car will be in the next frame, and if indeed ther is one there in the next frame, giving it a bigger weight on the heatmap)
+- using separate colors for nearby and close objects
+- using separate colors for slow-moving and fast-moving objects (relative to the users camera)
